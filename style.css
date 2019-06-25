@@ -1,0 +1,42 @@
+html, body {
+	background: #000;
+}
+.table {
+	max-width: 1000px;
+    height: 800px;
+	background: #007900;
+	padding: 10px;
+    margin: auto;
+}
+.card-init {
+	background: url(assets/cards.png);
+	background-repeat: no-repeat;
+	height: 129px;
+	width: 83px;
+    border-radius: 10px;
+	display: inline-block;
+}
+.wild {
+	background-position: -83px 0;
+}
+.y-0 {
+    background-position: -755px -129px;
+}
+.y-1 {
+    background-position: 0 -129px;
+}
+.y-2 {
+    background-position: -83px -129px;
+}
+.y-3 {
+    background-position: -167px -129px;
+}
+.y-4 {
+    background-position: -251px -129px;
+}
+.y-5 {
+    background-position: -335px -129px;
+}
+.y-6 {
+    background-position: -419px -129px;
+}
