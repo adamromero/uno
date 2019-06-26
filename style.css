@@ -1,12 +1,21 @@
 html, body {
 	background: #000;
 }
-.table {
+#table {
 	max-width: 1000px;
     height: 800px;
 	background: #007900;
 	padding: 10px;
     margin: auto;
+}
+#deck {
+	padding: 10px;
+    position: relative;
+    height: 129px;
+}
+#deck .card-init {
+	position: absolute;
+	left: 90px;
 }
 .card-init {
 	background: url(assets/cards.png);
@@ -16,8 +25,15 @@ html, body {
     border-radius: 10px;
 	display: inline-block;
 }
+.uno {
+	background-position: 0 0;
+	left: 0 !important;
+}
 .wild {
-	background-position: -83px 0;
+	background-position: -923px 0;
+}
+.wild-4 {
+	background-position: -502px 0;
 }
 .y-0 {
     background-position: -755px -129px;
@@ -39,4 +55,139 @@ html, body {
 }
 .y-6 {
     background-position: -419px -129px;
+}
+.y-7 {
+    background-position: -502px -129px;
+}
+.y-8 {
+    background-position: -587px -129px;
+}
+.y-9 {
+    background-position: -670px -129px;
+}
+.y-d-2 {
+    background-position: -838px -129px;
+}
+.y-s {
+    background-position: -923px -129px;
+}
+.y-r {
+    background-position: 0 -258px;
+}
+.r-0 {
+	background-position: -838px -258px;
+}
+.r-1 {
+    background-position: -83px -258px;
+}
+.r-2 {
+    background-position: -167px -258px;
+}
+.r-3 {
+    background-position: -251px -258px;
+}
+.r-4 {
+    background-position: -335px -258px;
+}
+.r-5 {
+    background-position: -419px -258px;
+}
+.r-6 {
+    background-position: -502px -258px;
+}
+.r-7 {
+    background-position: -587px -258px;
+}
+.r-8 {
+    background-position: -670px -258px;
+}
+.r-9 {
+    background-position: -755px -258px;
+}
+.r-d-2 {
+    background-position: -923px -258px;
+}
+.r-s {
+    background-position: 0 -387px;
+}
+.r-r {
+    background-position: -83px -387px;
+}
+.b-0 {
+    background-position: -923px -387px;
+}
+.b-1 {
+    background-position: -167px -387px;
+}
+.b-2 {
+    background-position: -251px -387px;
+}
+.b-3 {
+    background-position: -335px -387px;
+}
+.b-4 {
+    background-position: -419px -387px;
+}
+.b-5 {
+    background-position: -502px -387px;
+}
+.b-6 {
+    background-position: -587px -387px;
+}
+.b-7 {
+    background-position: -670px -387px;
+}
+.b-8 {
+    background-position: -755px -387px;
+}
+.b-9 {
+    background-position: -838px -387px;
+}
+.b-d-2 {
+    background-position: 0 -516px;
+}
+.b-s {
+    background-position: -83px -516px;
+}
+.b-r {
+    background-position: -167px -516px;
+}
+.g-0 {
+    background-position: 0 -645px;
+}
+.g-1 {
+    background-position: -251px -516px;
+}
+.g-2 {
+    background-position: -335px -516px;
+}
+.g-3 {
+    background-position: -419px -516px;
+}
+.g-4 {
+    background-position: -502px -516px;
+}
+.g-5 {
+    background-position: -587px -516px;
+}
+.g-6 {
+    background-position: -670px -516px;
+}
+.g-7 {
+    background-position: -755px -516px;
+}
+.g-8 {
+    background-position: -838px -516px;
+}
+.g-9 {
+    background-position: -923px -516px;
+}
+.g-d-2 {
+    background-position: -83px -645px;
+}
+.g-s {
+    background-position: -167px -645px;
+}
+.g-r {
+    background-position: -251px -645px;
 }

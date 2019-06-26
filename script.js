@@ -1,6 +1,6 @@
 let uno = (() => {
 	let table = document.getElementById('table'),
-		deck = [];
+		deck = [], player;
 
 	class Card {
 		constructor(img, face, color) {
@@ -8,15 +8,29 @@ let uno = (() => {
 			this.face = face;
 			this.color = color;
 		}
-
 	}
 
 	class Player {
+		constructor(hand) {
+			this.hand = hand;
+		}
 
+		getDeck = () => {
+			return this.hand;
+		}
 	}
 
 	createCards = () => {
+		deck.push(new Card('uno', 'Uno', ''));
 		deck.push(new Card('wild', 'Wild', ''));
+		deck.push(new Card('wild', 'Wild', ''));
+		deck.push(new Card('wild', 'Wild', ''));
+		deck.push(new Card('wild', 'Wild', ''));
+		deck.push(new Card('wild-4', 'Wild Draw 4', ''));
+		deck.push(new Card('wild-4', 'Wild Draw 4', ''));
+		deck.push(new Card('wild-4', 'Wild Draw 4', ''));
+		deck.push(new Card('wild-4', 'Wild Draw 4', ''));
+
 		deck.push(new Card('y-0', '0', 'Yellow'));
 		deck.push(new Card('y-1', '1', 'Yellow'));
 		deck.push(new Card('y-2', '2', 'Yellow'));
@@ -24,14 +38,123 @@ let uno = (() => {
 		deck.push(new Card('y-4', '4', 'Yellow'));
 		deck.push(new Card('y-5', '5', 'Yellow'));
 		deck.push(new Card('y-6', '6', 'Yellow'));
+		deck.push(new Card('y-7', '7', 'Yellow'));
+		deck.push(new Card('y-8', '8', 'Yellow'));
+		deck.push(new Card('y-9', '9', 'Yellow'));
+		deck.push(new Card('y-1', '1', 'Yellow'));
+		deck.push(new Card('y-2', '2', 'Yellow'));
+		deck.push(new Card('y-3', '3', 'Yellow'));
+		deck.push(new Card('y-4', '4', 'Yellow'));
+		deck.push(new Card('y-5', '5', 'Yellow'));
+		deck.push(new Card('y-6', '6', 'Yellow'));
+		deck.push(new Card('y-7', '7', 'Yellow'));
+		deck.push(new Card('y-8', '8', 'Yellow'));
+		deck.push(new Card('y-9', '9', 'Yellow'));
+		deck.push(new Card('y-d-2', 'Draw 2', 'Yellow'));
+		deck.push(new Card('y-d-2', 'Draw 2', 'Yellow'));
+		deck.push(new Card('y-s', 'Skip', 'Yellow'));
+		deck.push(new Card('y-s', 'Skip', 'Yellow'));
+		deck.push(new Card('y-r', 'Reverse', 'Yellow'));
+		deck.push(new Card('y-r', 'Reverse', 'Yellow'));
+
+		deck.push(new Card('r-0', '0', 'Red'));
+		deck.push(new Card('r-1', '1', 'Red'));
+		deck.push(new Card('r-2', '2', 'Red'));
+		deck.push(new Card('r-3', '3', 'Red'));
+		deck.push(new Card('r-4', '4', 'Red'));
+		deck.push(new Card('r-5', '5', 'Red'));
+		deck.push(new Card('r-6', '6', 'Red'));
+		deck.push(new Card('r-7', '7', 'Red'));
+		deck.push(new Card('r-8', '8', 'Red'));
+		deck.push(new Card('r-9', '9', 'Red'));
+		deck.push(new Card('r-1', '1', 'Red'));
+		deck.push(new Card('r-2', '2', 'Red'));
+		deck.push(new Card('r-3', '3', 'Red'));
+		deck.push(new Card('r-4', '4', 'Red'));
+		deck.push(new Card('r-5', '5', 'Red'));
+		deck.push(new Card('r-6', '6', 'Red'));
+		deck.push(new Card('r-7', '7', 'Red'));
+		deck.push(new Card('r-8', '8', 'Red'));
+		deck.push(new Card('r-9', '9', 'Red'));
+		deck.push(new Card('r-d-2', 'Draw 2', 'Red'));
+		deck.push(new Card('r-d-2', 'Draw 2', 'Red'));
+		deck.push(new Card('r-s', 'Skip', 'Red'));
+		deck.push(new Card('r-s', 'Skip', 'Red'));
+		deck.push(new Card('r-r', 'Reverse', 'Red'));
+		deck.push(new Card('r-r', 'Reverse', 'Red'));
+
+		deck.push(new Card('b-0', '0', 'Blue'));
+		deck.push(new Card('b-1', '1', 'Blue'));
+		deck.push(new Card('b-2', '2', 'Blue'));
+		deck.push(new Card('b-3', '3', 'Blue'));
+		deck.push(new Card('b-4', '4', 'Blue'));
+		deck.push(new Card('b-5', '5', 'Blue'));
+		deck.push(new Card('b-6', '6', 'Blue'));
+		deck.push(new Card('b-7', '7', 'Blue'));
+		deck.push(new Card('b-8', '8', 'Blue'));
+		deck.push(new Card('b-9', '9', 'Blue'));
+		deck.push(new Card('b-1', '1', 'Blue'));
+		deck.push(new Card('b-2', '2', 'Blue'));
+		deck.push(new Card('b-3', '3', 'Blue'));
+		deck.push(new Card('b-4', '4', 'Blue'));
+		deck.push(new Card('b-5', '5', 'Blue'));
+		deck.push(new Card('b-6', '6', 'Blue'));
+		deck.push(new Card('b-7', '7', 'Blue'));
+		deck.push(new Card('b-8', '8', 'Blue'));
+		deck.push(new Card('b-9', '9', 'Blue'));
+		deck.push(new Card('b-d-2', 'Draw 2', 'Blue'));
+		deck.push(new Card('b-d-2', 'Draw 2', 'Blue'));
+		deck.push(new Card('b-s', 'Skip', 'Blue'));
+		deck.push(new Card('b-s', 'Skip', 'Blue'));
+		deck.push(new Card('b-r', 'Reverse', 'Blue'));
+		deck.push(new Card('b-r', 'Reverse', 'Blue'));
+
+		deck.push(new Card('g-0', '0', 'Green'));
+		deck.push(new Card('g-1', '1', 'Green'));
+		deck.push(new Card('g-2', '2', 'Green'));
+		deck.push(new Card('g-3', '3', 'Green'));
+		deck.push(new Card('g-4', '4', 'Green'));
+		deck.push(new Card('g-5', '5', 'Green'));
+		deck.push(new Card('g-6', '6', 'Green'));
+		deck.push(new Card('g-7', '7', 'Green'));
+		deck.push(new Card('g-8', '8', 'Green'));
+		deck.push(new Card('g-9', '9', 'Green'));
+		deck.push(new Card('g-1', '1', 'Green'));
+		deck.push(new Card('g-2', '2', 'Green'));
+		deck.push(new Card('g-3', '3', 'Green'));
+		deck.push(new Card('g-4', '4', 'Green'));
+		deck.push(new Card('g-5', '5', 'Green'));
+		deck.push(new Card('g-6', '6', 'Green'));
+		deck.push(new Card('g-7', '7', 'Green'));
+		deck.push(new Card('g-8', '8', 'Green'));
+		deck.push(new Card('g-9', '9', 'Green'));
+		deck.push(new Card('g-d-2', 'Draw 2', 'Green'));
+		deck.push(new Card('g-d-2', 'Draw 2', 'Green'));
+		deck.push(new Card('g-s', 'Skip', 'Green'));
+		deck.push(new Card('g-s', 'Skip', 'Green'));
+		deck.push(new Card('g-r', 'Reverse', 'Green'));
+		deck.push(new Card('g-r', 'Reverse', 'Green'));
+
+		console.log(deck.length);
 	}
 
-	render = () => {
+	dealCards = () => {
+		let dealedDeck = [];
+		for (let i = 0; i < 7; i++) {
+			let random = Math.floor(Math.random() * Math.floor(deck.length));
+			dealedDeck.push(deck[random]);
+			//deck[random].pop();
+			//deck.splice(random, 1)
+		}
+		return dealedDeck;
+	}
+
+	render = (cardDeck, appendTo) => {
 		let cards = '';
-		deck.forEach(function(card) {
-			cards += `<div class='card-init ${card.img} ${card.color}'></div>`;
+		cardDeck.forEach(function(card) {
+			cards += `<div class='card-init ${card.img}'></div>`;
 		})
-		table.innerHTML = cards;
+		appendTo.innerHTML = cards;
 	}
 
 	init = () => {
@@ -40,7 +163,11 @@ let uno = (() => {
 		deck.forEach(function(card) {
 			console.log(card);
 		})
-		render();
+
+		player = new Player(dealCards());
+
+		render(deck, document.getElementById('deck'));
+		render(player.getDeck(), document.getElementById('player'));
 	}
 
 	return {
