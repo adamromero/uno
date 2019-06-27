@@ -9,13 +9,12 @@ html, body {
     margin: auto;
 }
 #deck {
-	padding: 10px;
     position: relative;
-    height: 129px;
+    height: 130px;
+    display: inline-block;
 }
 #deck .card-init {
 	position: absolute;
-	left: 90px;
 }
 .card-init {
 	background: url(assets/cards.png);
@@ -24,6 +23,7 @@ html, body {
 	width: 83px;
     border-radius: 10px;
 	display: inline-block;
+    margin: 0 20px 0 0;
 }
 .uno {
 	background-position: 0 0;

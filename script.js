@@ -1,9 +1,12 @@
 let uno = (() => {
 	let table = document.getElementById('table'),
-		deck = [], player;
+		drawTrigger = document.getElementById('drawFromDeck'),
+		deck = [], 
+		player;
 
 	class Card {
 		constructor(img, face, color) {
+			this.id = Math.random().toString(36).substring(7);
 			this.img = img;
 			this.face = face;
 			this.color = color;
@@ -15,13 +18,20 @@ let uno = (() => {
 			this.hand = hand;
 		}
 
+		drawACard = () => {
+			console.log('draw a card');
+		}
+
 		getDeck = () => {
 			return this.hand;
+		}
+
+		playCard = () => {
+			
 		}
 	}
 
 	createCards = () => {
-		deck.push(new Card('uno', 'Uno', ''));
 		deck.push(new Card('wild', 'Wild', ''));
 		deck.push(new Card('wild', 'Wild', ''));
 		deck.push(new Card('wild', 'Wild', ''));
@@ -134,8 +144,13 @@ let uno = (() => {
 		deck.push(new Card('g-s', 'Skip', 'Green'));
 		deck.push(new Card('g-r', 'Reverse', 'Green'));
 		deck.push(new Card('g-r', 'Reverse', 'Green'));
+	}
 
-		console.log(deck.length);
+	removeCardFromDeck = (dealedDeck) => {
+		var removeIndex = dealedDeck.map(function(item) { 
+			return item.id; 
+		});
+		deck.splice(removeIndex, 1);
 	}
 
 	dealCards = () => {
@@ -143,31 +158,46 @@ let uno = (() => {
 		for (let i = 0; i < 7; i++) {
 			let random = Math.floor(Math.random() * Math.floor(deck.length));
 			dealedDeck.push(deck[random]);
-			//deck[random].pop();
-			//deck.splice(random, 1)
+			removeCardFromDeck(dealedDeck);
 		}
+
 		return dealedDeck;
 	}
 
 	render = (cardDeck, appendTo) => {
 		let cards = '';
 		cardDeck.forEach(function(card) {
+			//console.log(card);
 			cards += `<div class='card-init ${card.img}'></div>`;
+
 		})
 		appendTo.innerHTML = cards;
 	}
 
+	handleEventListener = () => {
+		document.querySelectorAll('.card-init').forEach(function (card) {
+			card.addEventListener('click', function (e) {
+				if (e.target.id === 'drawFromDeck') {
+					player.drawACard();
+				}
+			});
+		});
+
+		document.getElementById('deck').addEventListener('click', function (e) {
+			
+			console.log('deck clicked');
+			
+		});
+	}
+
 	init = () => {
 		createCards();
-		
-		deck.forEach(function(card) {
-			console.log(card);
-		})
 
 		player = new Player(dealCards());
-
 		render(deck, document.getElementById('deck'));
 		render(player.getDeck(), document.getElementById('player'));
+
+		handleEventListener();
 	}
 
 	return {
